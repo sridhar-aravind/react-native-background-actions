@@ -54,7 +54,7 @@ final public class RNBackgroundActionsTask extends HeadlessJsTaskService {
                 .setSmallIcon(iconInt)
                 .setContentIntent(contentIntent)
                 .setOngoing(true)
-                .setPriority(NotificationCompat.PRIORITY_MIN)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setColor(color);
 
         final Bundle progressBarBundle = bgOptions.getProgressBar();
@@ -94,7 +94,7 @@ final public class RNBackgroundActionsTask extends HeadlessJsTaskService {
 
     private void createNotificationChannel(@NonNull final String taskTitle, @NonNull final String taskDesc) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            final int importance = NotificationManager.IMPORTANCE_LOW;
+            final int importance = NotificationManager.IMPORTANCE_HIGH;
             final NotificationChannel channel = new NotificationChannel(CHANNEL_ID, taskTitle, importance);
             channel.setDescription(taskDesc);
             final NotificationManager notificationManager = getSystemService(NotificationManager.class);
